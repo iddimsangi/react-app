@@ -1,38 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
 
 
-class App extends Component {
-  state = {
+const app = (props) =>{
+ const [ personsState, setPersonsState ] = useState( {
     person:[
       {name:'iddimsangi'},
       {name:'harith'}
     ],
     otherState:'im the other state'
-  }
+  });
    
-  
-  switchHandler = () =>{
+  useState('another state properties');
+  const [x, y] = useState('heyhey');
+  console.log(y);
+  console.log(personsState);
+ const switchHandler = () =>{
     // console.log('you clicked');
-    this.setState({
+    setPersonsState({
       person:[
         {name:'iddi Adam'},
         {name:'harith iddi'}
       ]
     })
   }
-  render() {
+ 
     return (
       <div className="App">
        <h1>Welcome to react software devs</h1>
-       <button onClick={this.switchHandler}>switch</button>
-      <Person name={this.state.person[0].name} />
+       <button onClick={switchHandler}>switch</button>
+      <Person name={personsState.person[0].name} />
       <Person name="harith" />
       </div>
     );
   }
-}
 
-export default App;
+
+export default app;
